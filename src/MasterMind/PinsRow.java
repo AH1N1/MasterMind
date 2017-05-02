@@ -20,6 +20,10 @@ public class PinsRow  {
     public PinsRow() {
         pins=new ArrayList<>();
     }
+    public PinsRow(int row) {
+        this.row=row;
+        pins=new ArrayList<>();
+    }
 
     public List<Pin> getPins() {
         return pins;
