@@ -4,33 +4,32 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 /**
  * Created by Woj on 2017-04-29.
  */
 public class Pin extends StackPane {
-    private Rectangle pin;
+    private Circle pin;
     private int color;
     private Type type;
 
     public Pin(Type type, int size, Color color,Insets insets) {
-        this.pin = new Rectangle();
+        this.pin = new Circle(size);
         this.type=type;
-        pin.setWidth(size);
-        pin.setHeight(size);
         pin.setFill(color);
         getChildren().add(pin);
-        setAlignment(Pos.BASELINE_CENTER);
+        setAlignment(Pos.CENTER);
         setPadding(insets);
     }
 
 
-    public Rectangle getPin() {
+    public Circle getPin() {
         return pin;
     }
 
-    public void setPin(Rectangle pin) {
+    public void setPin(Circle pin) {
         this.pin = pin;
     }
 
@@ -48,5 +47,10 @@ public class Pin extends StackPane {
 
     public void setType(Type type) {
         this.type = type;
+    }
+
+    public void setSize(int size){
+        pin.setRadius(size);
+
     }
 }

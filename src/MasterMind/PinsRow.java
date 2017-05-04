@@ -8,9 +8,10 @@ import java.util.List;
 /**
  * Created by Woj on 2017-04-29.
  */
-public class PinsRow  {
+public class PinsRow {
     private List<Pin> pins;
     private int row;
+    private Type type;
 
     public PinsRow(List<Pin> pins, int row) {
         this.pins = pins;
@@ -18,11 +19,20 @@ public class PinsRow  {
     }
 
     public PinsRow() {
-        pins=new ArrayList<>();
+        pins = new ArrayList<>();
     }
+
     public PinsRow(int row) {
-        this.row=row;
-        pins=new ArrayList<>();
+        this.row = row;
+        pins = new ArrayList<>();
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
     }
 
     public List<Pin> getPins() {
@@ -41,21 +51,24 @@ public class PinsRow  {
         this.row = row;
     }
 
-    public void addPin(Pin pin){
+    public void addPin(Pin pin) {
         pins.add(pin);
     }
 
-    public Pin getPin(int index){
+    public Pin getPin(int index) {
         return pins.get(index);
     }
 
-    public void setAtRow(int from, int to){
-                    for (int i = from; i < to; i++) {
-                GridPane.setConstraints(pins.get(i),i,row);
-            }
+    public void setAtRow(int from, int to) {
+        int index = 0;
+        for (int i = from; i < to; i++) {
+            GridPane.setConstraints(pins.get(index), i, row);
+            index++;
+        }
+    }
 
-
-
-
+    public void setTypeAndPins(Type type) {
+        this.type = type;
+        pins.forEach(pin -> pin.setType(type));
     }
 }
